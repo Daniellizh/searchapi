@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HouseExportImportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::controller(HouseExportImportController::class)->group(function(){
+    Route::get('houses', 'index');
+    Route::get('houses-export', 'export')->name('houses.export');
+    Route::post('houses-import', 'import')->name('houses.import');
+});
 
 Route::get('/', function () {
     return view('welcome');

@@ -11,7 +11,13 @@ class SearchApiController extends Controller
 {
     public function search(Request $request)
     {
-        $houses = House::name($request->name)->bedrooms($request->bedrooms)->get();
+        $houses = House::name($request->name)
+        ->bedrooms($request->bedrooms)
+        ->bathrooms($request->bathrooms)
+        ->storeys($request->storeys)
+        ->garages($request->garages)
+        ->price($request->price)
+        ->get();
         return response()->json($houses);
     }
 }

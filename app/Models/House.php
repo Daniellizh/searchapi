@@ -50,6 +50,14 @@ class House extends Model
         return $query;
     }
 
+    public function scopeGarages($query, $garages)
+    {
+        if($garages) {
+            return $query->where('storeys', $garages);
+        }
+        return $query;
+    }
+
     public function scopePrice($query, $price)
     {
         if($price) {

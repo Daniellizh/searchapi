@@ -4,10 +4,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class House extends Model
 {
     use HasFactory;
+    use Notifiable;
+    use SearchableTrait;
+
+    protected $searchable = [
+        'columns' => [
+            'full_text_searches.name'  => 10,
+            'full_text_searches.bedrooms'   => 10,
+            'full_text_searches.bathrooms'   => 10,
+            'full_text_searches.storeys'    => 10,
+            'full_text_searches.garages'  => 10,
+            'full_text_searches.price'   => 10,
+            'full_text_searches.id'    => 10,
+        ]
+    ];
 
     protected $fillable = [
         'name',

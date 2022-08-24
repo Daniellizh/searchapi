@@ -3,13 +3,10 @@
      
 <div class="container">
     <div class="card bg-light mt-3">
-        <div class="card-header">
-            Laravel 9 Import Export Excel to Database Example - ItSolutionStuff.com
-        </div>
         <div class="card-body">
             <form action="{{ route('houses.import') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input type="file" name="file" class="form-control">
+                <input type="file" name="file" class="form-control" required>
                 <br>
                 <button class="btn btn-success">Import House</button>
             </form>

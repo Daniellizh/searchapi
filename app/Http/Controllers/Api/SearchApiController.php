@@ -9,7 +9,7 @@ use App\Models\House;
 
 class SearchApiController extends Controller
 {
-    public function search(Request $request)
+    public function index(Request $request)
     {
         $houses = House::name($request->name)
         ->bedrooms($request->bedrooms)

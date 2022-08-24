@@ -3,8 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HouseExportImportController;
 
-use App\Http\Controllers\SearchHouseController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,13 +19,6 @@ Route::controller(HouseExportImportController::class)->group(function(){
     Route::get('houses-export', 'export')->name('houses.export');
     Route::post('houses-import', 'import')->name('houses.import');
 });
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/', [SearchHouseController::class,'index']);
-Route::post('/action', [SearchHouseController::class,'action'])->name('text_search.action');
 
 Route::get('/', function () {
     return view('welcome');

@@ -4,7 +4,12 @@
 <div class="container"> 
     <div class="row">
         <div class="col-md-6">
-            <input type="text" name="text_search" id="text_search" class="form-control" placeholder="Search" value="">
+            <input type="text" name="name" id="name" class="form-control" placeholder="name" value="">
+            <input type="text" name="bedrooms" id="bedrooms" class="form-control" placeholder="bedrooms" value="">
+            <input type="text" name="bathrooms" id="bathrooms" class="form-control" placeholder="bathrooms" value="">
+            <input type="text" name="storeys" id="storeys" class="form-control" placeholder="storeys" value="">
+            <input type="text" name="garages" id="garages" class="form-control" placeholder="garages" value="">
+            <input type="text" name="price" id="price" class="form-control" placeholder="price" value="">
         </div>
         <div class="col-md-2">
             @csrf
@@ -32,13 +37,12 @@
 <script>
     $(document).ready(function(){
         load_data('');
-        function load_data(text_search_query = '')
+        function load_data(name = '', bedrooms = '', bathrooms = '', storeys = '', garages = '', price = '')
         {
-            var _token = $("input[name=_token]").val();
             $.ajax({
-                url:"{{ route('text_search.action') }}",
-                method:"POST",
-                data:{text_search_query:text_search_query, _token:_token},
+                url:"{{ route('api.search') }}",
+                method:"GET",
+                data:{name:name, bedrooms:bedrooms, bathrooms:bathrooms, storeys:storeys, garages:garages, price:price},
                 dataType:"json",
                 success:function(data)
                 {
@@ -67,8 +71,13 @@
         }
 
         $('#search').click(function(){
-            var text_search_query = $('#text_search').val();
-            load_data(text_search_query);
+            var name = $('#name').val();
+            var bedrooms = $('#bedrooms').val();
+            var bathrooms = $('#bathrooms').val();
+            var storeys = $('#storeys').val();
+            var garages = $('#garages').val();
+            var price = $('#price').val();
+            load_data(name, bedrooms, bathrooms, storeys, garages, price);
         });
     });
 </script>
